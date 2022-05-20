@@ -19,11 +19,7 @@ func solution(_ id_list:[String], _ report:[String], _ k:Int) -> [Int] {
     }
     
     for user in splitedReport {
-        if reportInfo[String(user[1])] != nil {
-            reportInfo[String(user[1])]?.insert(String(user[0]))
-        } else {
-            reportInfo[String(user[1])] = [String(user[0])]
-        }
+        reportInfo[String(user[1]), default: []].insert(String(user[0])) 
     }
 
     for (_, value) in reportInfo {
