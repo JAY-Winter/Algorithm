@@ -12,9 +12,11 @@ func solution(_ clothes:[[String]]) -> Int {
     let clothesInfo = arrangeClothes(clothes)
     let categoryCount: Int = clothesInfo.values.count
     
+    print("clothesInfo : \(clothesInfo)")
     
     if categoryCount >= 2 {
         for cloth in clothesInfo.values {
+            print("cloth : \(cloth)")
             result += cloth.count
             result += 1
         }
@@ -34,7 +36,6 @@ func arrangeClothes(_ clothes: [[String]]) -> [String: [String]] {
     let cloth = clothes.map {$0[0] }
     
     for (category, cloth) in zip(category, cloth) {
-        
         if clothesInfo[category] != nil {
             clothesInfo[category]?.append(cloth)
         } else {
@@ -62,3 +63,25 @@ let case3 = solution([
     ["green_turban", "headgear"],
     ["red_jean", "pants"]
     ])
+
+
+
+
+// MARK: - Test Scope
+
+
+let words = ["one", "two", "three", "four"]
+let naturalNumbers = 1...10
+let zipped = Dictionary(uniqueKeysWithValues: zip(words, naturalNumbers))
+// print(zipped)
+
+let clothes = [
+        ["yellowhat", "headgear"],
+        ["bluesunglasses", "eyewear"],
+        ["green_turban", "headgear"]
+        ]
+let category = clothes.map {$0[1] }
+let cloth = clothes.map {$0[0] }
+
+// print(category)
+// print(cloth)

@@ -19,7 +19,8 @@ func solution(_ id_list:[String], _ report:[String], _ k:Int) -> [Int] {
     }
     
     for user in splitedReport {
-        reportInfo[String(user[1]), default: []].insert(String(user[0])) 
+        reportInfo[String(user[1]), default: []].insert(String(user[0]))
+        print("reportInfo : \(reportInfo)")
     }
 
     for (_, value) in reportInfo {
