@@ -11,11 +11,11 @@ func solution(_ priorities:[Int], _ location:Int) -> Int {
     var answer = 0
     var priority = priorities
     var targetIndex = location
-    
+    print("priority : \(priority)")
 
     while true {
         if priority.first! == priority.max() {
-            priority.removeFirst()
+            priority.removeFirst() // removeFirst : O(N) ... popLast, removeLast : O(1)
             answer += 1
             
             if targetIndex == 0 {
@@ -23,6 +23,7 @@ func solution(_ priorities:[Int], _ location:Int) -> Int {
             } else {
                 targetIndex -= 1
             }
+            
         } else {
             priority.append(priority.removeFirst())
             
@@ -33,7 +34,12 @@ func solution(_ priorities:[Int], _ location:Int) -> Int {
             }
         }
     }
-    print(answer)
+    
+    print("""
+answer : \(answer)
+------------------------------------------------------
+"""
+    )
     return answer
 }
 

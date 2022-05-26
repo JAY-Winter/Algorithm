@@ -15,8 +15,10 @@ func solution(_ progresses:[Int], _ speeds:[Int]) -> [Int] {
     var result: [Int] = []
     
     for (progress, speed) in zip(progresses, speeds) {
+        print(progress, speed)
         speedPerProgress[progress] = speed
     }
+    print("speedPerProgress : \(speedPerProgress)")
     
     for progress in 0 ..< progresses.count {
         var count: Int = 0
@@ -27,7 +29,7 @@ func solution(_ progresses:[Int], _ speeds:[Int]) -> [Int] {
         }
         Q.append(count)
     }
-    print("dayToCompleteWork : \(Q)")
+    print("spendDayToCompleteWork : \(Q)")
     
     while !Q.isEmpty {
         var cnt = 0
@@ -39,7 +41,13 @@ func solution(_ progresses:[Int], _ speeds:[Int]) -> [Int] {
         }
         result.append(cnt)
     }
-    print("result : \(result)")
+    
+    
+    
+    print("""
+result : \(result)
+---------------------------------------------
+""")
     return result
 }
 
