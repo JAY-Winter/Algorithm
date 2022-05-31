@@ -15,19 +15,45 @@ var sum: Int = 0 // 위치들의 합
 var maxSum: Int = 0
 let list = readLine()!.split(separator: " ").map { Int($0)! }
 
+// 제약 조건을 둔다.
+// 상태트리를 그려보자.
+
+
+
+
+// 선택을 하고 / 하지 않고
+//
+
+
+
+
 func blackJack() {
-    for i in 0..<list.count {
+    for i in 0 ..< list.count {
         for j in i+1 ..< list.count {
             for k in j+1 ..< list.count {
                 sum = list[i] + list[j] + list[k]
+                
+                if sum > M { break }
+                
+                print("sum : \(sum)")
                 if sum <= M && maxSum < sum {
                     maxSum = sum
                 }
+                
             }
         }
     }
-    print(maxSum)
+    print("maxSum : \(maxSum)")
 }
+
+
+
+func blakcJack2() {
+    
+}
+
+
+
 
 blackJack()
 

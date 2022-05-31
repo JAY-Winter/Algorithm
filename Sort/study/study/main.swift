@@ -9,46 +9,49 @@ import Foundation
 
 let sampleArray = [4, 7, 9, 2, 3, 5, 6, 1, 8]
 
-func quickSort(array: [Int]) -> [Int] {
-    print(array)
-    if array.count < 2 {
-        return array
-    } else {
-        let P = array[0]
-        let smaller = array.filter { $0 < P }
-        let bigger = array.filter { $0 > P}
-        return quickSort(array: smaller) + [P] + quickSort(array: bigger)
+class QuickSort {
+    static func quickSort(_ arr : inout [Int]) {
+        QuickSort.quickSort(&arr,0, arr.count - 1);
+    }
+    
+    static func quickSort(_ arr : inout [Int], _ start : Int, _ end : Int) {
+        let part2: Int = QuickSort.partition(&arr, start, end);
+        if (start < part2 - 1) {
+            QuickSort.quickSort(&arr, start, part2 - 1);
+        }
+        if (part2 < end) {
+            QuickSort.quickSort(&arr, part2, end);
+        }
+    }
+    
+    static func partition(_ arr : inout [Int], _ start : Int, _ end : Int) -> Int {
+        let pivot: Int = arr[(start + end) / 2]
+        var start = start
+        var end = end
+        while (start <= end) {
+            
+            while (arr[start] < pivot) { start += 1 }
+            while (arr[end] < pivot) { end -= 1 }
+            
+            if (start <= end) {
+                QuickSort.swap(&arr, start, end);
+                start += 1
+                end -= 1
+            }
+        }
+        return start;
+    }
+    
+    static func swap(_ arr : inout [Int], _ start : Int, _ end : Int) {
+        let tmp : Int = arr[start];
+        arr[start] = arr[end];
+        arr[end] = tmp;
+    }
+    
+    static func printArray(_ arr : inout [Int]) {
+        for data in arr{
+            print(String(data) + ", ",terminator: "");
+        }
+        print();
     }
 }
-
-print(quickSort(array: sampleArray))
-
-// func quickSort(with array: Array<Int>) {
-//
-//     var N = array
-//     print("N : \(N)")
-//
-//     let PL = 0
-//     let P = N[PL]
-//
-//     var L = PL + 1
-//     var R = N.count - L
-//     // print("PL, P : \(PL), \(P)")
-//     // print("L, R : \(L), \(R)")
-//     print("N[L]: \(N[L]), N[R] : \(N[R])")
-//     for _ in 0...2 {
-//         if N[L] > P && N[R] < P {
-//             print("yes")
-//             let temp = N[L]
-//             N[L] = N[R]
-//             N[R] = temp
-//         } else if N[L] > P && N[R] > P {
-//             R -= 1
-//         } else if N[L] < P && N[R] < P {
-//             L += 1
-//         }
-//         print(array)
-//     }
-//
-//
-// }
