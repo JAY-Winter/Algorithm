@@ -20,6 +20,7 @@ func solution(_ fees:[Int], _ records:[String]) -> [Int] {
         
         let time = (hour: splitTime[0], min: splitTime[1])
         // records 는 IN&OUT 순으로 정렬되어있기 때문에 IN or OUT 상관없이 (시 + 분)으로 계산
+        
         recordsByCar[carNumber, default: []].append(converseTime(with: time))
     }
     // IN 만 했을 때 (23:59) append
@@ -29,7 +30,11 @@ func solution(_ fees:[Int], _ records:[String]) -> [Int] {
     for (car, timeList) in recordsByCar {
         var totalCost = 0
         var spendTime = 0
-        
+
+
+
+        // 5961 : [334, 479, in, out, in ...]
+
         // IN > OUT 순으로 추가되어있는 time 을 (OUT - IN) 하는 구문
         print("timeList : \(timeList)")
         for i in 0 ..< timeList.count {
@@ -39,14 +44,15 @@ func solution(_ fees:[Int], _ records:[String]) -> [Int] {
                 spendTime += timeList[i]
             }
         }
-        
+
         // 정리된 spendTime 을 매개변수(기본시간)으로 구분
         if spendTime > fees[0] {
+            // ceil 을 최대한 쓰지 말자.... Double 이 명확한 값을 지칭하는지 몰라서 ,, ,, > 정확도가 높다, 다만 정확한 건 아니다...
             totalCost = fees[1] + Int(ceil(Double(spendTime - fees[0]) / Double(fees[2]))) * fees[3]
         } else {
             totalCost = fees[1]
         }
-        
+        // totalCost >>
         // 차종별 딕셔너리 마지막 인데스에 추가
         recordsByCar[car, default: []].append(totalCost)
     }
@@ -71,14 +77,14 @@ func appendTime(_ records: inout [String: [Int]]) {
 
 func getResult(_ records: inout [String: [Int]]) -> [Int] {
     var answer: [Int] = []
-    
+    // recordsByCar
     records
         .keys
         .sorted()
         .forEach {
         answer.append(records[$0]!.last!)
     }
-    
+
     return answer
 }
 

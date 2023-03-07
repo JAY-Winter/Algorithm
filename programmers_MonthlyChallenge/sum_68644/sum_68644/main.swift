@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// 월간 코드 챌린지 시즌1 두 개 뽑아서 더하기
 // MARK: - Sol1
 var S = Set<Int>()
 

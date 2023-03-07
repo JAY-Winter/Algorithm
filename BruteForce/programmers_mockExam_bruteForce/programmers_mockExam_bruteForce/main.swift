@@ -37,4 +37,4 @@ func solution(_ answers:[Int]) -> [Int] {
     return []
 }
 
-solution([1,2,3,4,5])
+print(solution([1,2,3,4,5]))

@@ -7,26 +7,27 @@
 
 import Foundation
 
+
+
+
+/// TESTING
 func uniquePaths(_ m: Int, _ n: Int) -> Int {
     var result = 0
+    // 값을 momoziation
     var dp = Array(repeating: Array(repeating: 1, count: m), count: n)
-    dp[0][0] = 1
-    dp[n-1][m-1] = 1
-
     
-    
-
     for i in 1 ..< dp.count {
         for j in 1 ..< dp[i].count {
-            print(i, j)
             dp[i][j] = dp[i-1][j] + dp[i][j-1]
         }
     }
-
+    // stride ... 사용 권장
     
-    result = dp[n-1][m-1]
+    result = dp[n-1][m-1] // (6,2)
     return result
 }
+
+let sol = uniquePaths(3, 7)
 
 
 let case1 = uniquePaths(3,7)
@@ -34,4 +35,5 @@ print(case1)
 
 let case2 = uniquePaths(1, 2)
 print(case2)
+
 

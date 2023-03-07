@@ -9,10 +9,7 @@ import Foundation
 
 // 인접리스트 생성 함수
 func generateAdjacencyList(with array: [[Int]]) -> [[Int]] {
-    
-    // var adjacencyList: [[Int]] = []
     var adjacencyList = [[Int]](repeating: [], count: array.count)
-    
     
     array.forEach {
         adjacencyList[$0[0]].append($0[1])

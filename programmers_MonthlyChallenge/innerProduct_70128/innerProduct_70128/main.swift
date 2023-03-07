@@ -1,5 +1,5 @@
 import Foundation
-
+// 월간 코드 챌린지 시즌1 내적
 func solution(_ a:[Int], _ b:[Int]) -> Int {
     var result = 0
     var arr = [Int]()

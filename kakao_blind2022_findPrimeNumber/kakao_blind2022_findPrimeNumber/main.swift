@@ -23,20 +23,22 @@ func solution(_ n:Int, _ k:Int) -> Int {
     var answer = 0
     
     let number = String(n, radix: k)
-    print(number)
+    print("number : \(number)")
     
     let splitedNumber = number.split(separator: "0").map { Int($0)! }
-    print(splitedNumber)
+    print("splitedNumber : \(splitedNumber)")
     
     for number in splitedNumber {
         
         if isPrime(number) && number > 1 {
-            print(number)
-            answer += 1}
+            print("number : \(number)")
+            answer += 1
+        }
     }
     
     return answer
 }
 
-print(solution(437674, 3))
-print(solution(110011, 10))
+print("answer: \(solution(437674, 3))")
+print("--------------------")
+print("answer: \(solution(110011, 10))")

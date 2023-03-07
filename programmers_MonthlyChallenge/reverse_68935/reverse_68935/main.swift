@@ -4,7 +4,7 @@
 //
 //  Created by JAEHYEON on 2022/06/22.
 //
-
+// 월간 코드 챌린지 시즌1 3진법 뒤집기
 import Foundation
 
 func solution(_ n:Int) -> Int {
