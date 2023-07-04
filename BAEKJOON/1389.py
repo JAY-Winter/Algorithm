@@ -7,7 +7,6 @@ for _ in range(M):
 
 
 def search(node, dist):
-
     for search_node in range(1, N+1):
         if search_node == node:
             continue

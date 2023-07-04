@@ -8,7 +8,7 @@ search_list = list(map(int, input().split()))
 
 for b in search_list:
     left = 0
-    right = M
+    right = N
     flag = False
     while left < right:
         mid = (left + right) // 2
