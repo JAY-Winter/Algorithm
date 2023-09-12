@@ -23,6 +23,7 @@ def set_air_zone(r=0, c=0):
                 graph[nr][nc] = 2
                 Q.append((nr, nc))
 
+
 def is_disapear(r, c):
     zero_cnt = 0
     for d in range(4):
