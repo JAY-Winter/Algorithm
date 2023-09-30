@@ -38,3 +38,6 @@ board = [list(map(int, input().strip())) for _ in range(N)]
 visited = [[[0] * (K + 1) for _ in range(M)] for _ in range(N)]
 
 print(bfs())
+
+from pprint import pprint
+pprint(visited)
