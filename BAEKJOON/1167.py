@@ -6,7 +6,7 @@ for _ in range(V):
         node1, node2, weight = cur_line[0], cur_line[i], cur_line[i + 1]
         graph[node1].append((node2, weight))
 
-answer = -987654321
+answer_cost = -987654321
 
 
 def dfs(cur_node, visited):
@@ -26,6 +26,6 @@ def dfs(cur_node, visited):
 start_node, _ = dfs(1, [False] * (V + 1))
 
 # 가장 먼 노드에서 다시 시작
-_, answer = dfs(start_node, [False] * (V + 1))
+_, answer_cost = dfs(start_node, [False] * (V + 1))
 
-print(answer)
+print(answer_cost)
