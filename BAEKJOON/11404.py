@@ -32,3 +32,48 @@ for i in range(1, n + 1):
         else:
             print(cost_graph[i][j], end=' ')
     print()
+
+
+## 다익스트라 풀이
+import heapq
+
+def dijkstra(start):
+    distances = [float('inf')] * (n+1)
+    distances[start] = 0
+    queue = [(0, start)]
+
+    while queue:
+        current_distance, current_city = heapq.heappop(queue)
+
+        if distances[current_city] < current_distance:
+            continue
+
+        for adj_city, adj_distance in graph[current_city]:
+            distance = current_distance + adj_distance
+            if distance < distances[adj_city]:
+                distances[adj_city] = distance
+                heapq.heappush(queue, (distance, adj_city))
+
+    return distances
+
+n = int(input())
+m = int(input())
+graph = [[] for _ in range(n+1)]
+
+for _ in range(m):
+    a, b, c = map(int, input().split())
+    graph[a].append((b, c))
+
+result = []
+
+for i in range(1, n+1):
+    distances = dijkstra(i)
+    result.append(distances[1:])
+
+for row in result:
+    for val in row:
+        if val == float('inf'):
+            print(0, end=' ')
+        else:
+            print(val, end=' ')
+    print()
