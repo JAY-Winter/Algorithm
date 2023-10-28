@@ -5,6 +5,7 @@ Q) 수 N개가 주어졌을 때, 규칙에 맞는 다음 수를 구하라
 
 '''
 
+
 #
 # def find_a_b():
 #     INF = 100
@@ -19,13 +20,13 @@ Q) 수 N개가 주어졌을 때, 규칙에 맞는 다음 수를 구하라
 #     return False, 0, 0
 
 
-def dfs(n, a, b, checked):
+def recur(n, a, b, checked):
     if n == len(numbers) - 1:
         return
 
     if numbers[n + 1] == numbers[n] * a + b:
         checked[n] = True
-        dfs(n + 1, a, b, checked)
+        recur(n + 1, a, b, checked)
 
 
 N = int(input())
@@ -47,7 +48,7 @@ else:
         b = numbers[1] - numbers[0] * a
 
     checked = [False] * len(numbers)
-    dfs(0, a, b, checked)
+    recur(0, a, b, checked)
     if all(checked[:-1]):
         result = numbers[-1] * a + b
     else:
